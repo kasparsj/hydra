@@ -42939,6 +42939,7 @@ module.exports = function store(state, emitter) {
 
 }
 },{"./text-elements.js":235,"i18next":99,"i18next-browser-languagedetector":98}],234:[function(require,module,exports){
+(function (process){(function (){
 const Gallery = require('./gallery.js')
 const repl = require('../views/editor/repl.js')
 // console.log('ENVIRONMENT IS', process.env.NODE_ENV)
@@ -42947,7 +42948,7 @@ module.exports = function store(state, emitter) {
   state.showInfo = true
   state.showUI = true
 
-  const SERVER_URL = "http://localhost:8000"
+  const SERVER_URL = process.env['SERVER_URL']
   state.serverURL = SERVER_URL !== undefined ? SERVER_URL : null
  let sketches
 
@@ -43087,7 +43088,8 @@ function showConfirmation(successCallback, terminateCallback) {
     terminateCallback()
   }
 }
-},{"../views/editor/repl.js":244,"./gallery.js":232}],235:[function(require,module,exports){
+}).call(this)}).call(this,require('_process'))
+},{"../views/editor/repl.js":244,"./gallery.js":232,"_process":160}],235:[function(require,module,exports){
 module.exports = {
     en: {
         translation: {
@@ -43432,7 +43434,31 @@ module.exports = {
     'Shift-Cmd-S': 'screencap'
 }
 },{}],240:[function(require,module,exports){
-var logElement
+let logElement, prefix, lastMsg;
+const fpsArr = [];
+const fpsCount = 60;
+let lastUpdate = 0;
+
+const tick = () => {
+  window.requestAnimationFrame(tick);
+  if (window.stats) {
+    fpsArr.push(window.stats.fps);
+    if (fpsArr.length > fpsCount) {
+      fpsArr.shift();
+    }
+  }
+  const now = Date.now();
+  if (now - lastUpdate >= 1000) {
+    lastUpdate = now;
+    const fps = (fpsArr.reduce((a, b) => a + b, 0) / fpsCount).toFixed(1);
+    prefix = `${fps} >> `;
+    draw();
+  }
+}
+
+const draw = () => {
+  if (logElement) if(logElement) logElement.innerHTML =`${prefix} ${lastMsg}`;
+}
 
 module.exports = {
   init: (el) => {
@@ -43440,10 +43466,14 @@ module.exports = {
     // logElement.className = "console cm-s-tomorrow-night-eighties"
     // document.body.appendChild(logElement)
     logElement = el
+    if (logElement) {
+      window.requestAnimationFrame(tick);
+    }
   },
   log: (msg, className = "") => {
     console.log('logging', msg, className)
-    if(logElement) logElement.innerHTML =` >> <span class=${className}> ${msg} </span> `
+    lastMsg = `<span className=${className}> ${msg} </span>`;
+    draw();
   },
   hide: () => {
     if(logElement) logElement.style.display = 'none'

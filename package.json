@@ -6,10 +6,11 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "uglify": "terser ./public/bundle.js --source-map \"content=inline\" -o ./public/bundle.min.js",
+    "watch-local": "watchify ./index.js -v -o ./public/bundle.js",
     "watch": "watchify ./index.js -t [ envify --SERVER_URL http://localhost:8000] -v -o ./public/bundle.js",
     "build": "browserify ./index.js -t [ envify --SERVER_URL https://api.hydrasynth.xyz] --debug -o ./public/bundle.js && npm run uglify",
     "source-map": "source-map-explorer ./public/bundle.min.js ./public/bundle.min.js.map",
-    "dev": "http-server ./public & npm run watch",
+    "dev": "http-server ./public & npm run watch-local",
     "run-frontend": "http-server ./public & browserify ./index.js -t --debug -o ./public/bundle.js && npm run uglify",
     "publish": "git subtree push --prefix=public origin gh-pages"
   },
