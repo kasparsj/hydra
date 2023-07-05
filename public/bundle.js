@@ -41883,10 +41883,17 @@ class P5 extends p5{
       p.setup = () => { p.createCanvas(width, height, p[mode]) }
   //    p.setup = () => { p.createCanvas() }
       p.draw = () => { }
-    }, 'hydra-ui')
+    }, document.getElementById('hydra-ui'))
     this.width = width
     this.height = height
     this.mode = mode
+    if (!this.canvas) {
+      this.setup();
+      const p5 = this;
+      window.addEventListener('load', () => {
+        p5.hide();
+      });
+    }
     this.canvas.style.position = "absolute"
     this.canvas.style.top = "0px"
     this.canvas.style.left = "0px"
@@ -43234,8 +43241,16 @@ module.exports = class HydraCanvas extends Component {
     // }
 
     window.P5 = P5
+    window.p5 = new P5();
     // window.pb = pb
-    this.emit('hydra loaded')
+
+    // todo: hack
+    const startup = async () => {
+      await loadScript("/startup.js");
+
+      this.emit('hydra loaded')
+    }
+    startup();
   }
 
   update(center) {
