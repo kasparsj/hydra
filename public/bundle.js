@@ -43244,13 +43244,7 @@ module.exports = class HydraCanvas extends Component {
     window.p5 = new P5();
     // window.pb = pb
 
-    // todo: hack
-    const startup = async () => {
-      await loadScript("/startup.js");
-
-      this.emit('hydra loaded')
-    }
-    startup();
+    this.emit('hydra loaded')
   }
 
   update(center) {
