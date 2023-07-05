@@ -13,10 +13,13 @@ class P5 extends p5{
       p.setup = () => { p.createCanvas(width, height, p[mode]) }
   //    p.setup = () => { p.createCanvas() }
       p.draw = () => { }
-    }, 'hydra-ui')
+    }, document.getElementById('hydra-ui'))
     this.width = width
     this.height = height
     this.mode = mode
+    if (!this.canvas) {
+      this.setup();
+    }
     this.canvas.style.position = "absolute"
     this.canvas.style.top = "0px"
     this.canvas.style.left = "0px"
