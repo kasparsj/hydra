@@ -42953,6 +42953,7 @@ module.exports = function store(state, emitter) {
 
 }
 },{"./text-elements.js":235,"i18next":99,"i18next-browser-languagedetector":98}],234:[function(require,module,exports){
+(function (process){(function (){
 const Gallery = require('./gallery.js')
 const repl = require('../views/editor/repl.js')
 // console.log('ENVIRONMENT IS', process.env.NODE_ENV)
@@ -42961,7 +42962,7 @@ module.exports = function store(state, emitter) {
   state.showInfo = true
   state.showUI = true
 
-  const SERVER_URL = "http://localhost:8000"
+  const SERVER_URL = process.env['SERVER_URL']
   state.serverURL = SERVER_URL !== undefined ? SERVER_URL : null
  let sketches
 
@@ -43106,7 +43107,8 @@ function showConfirmation(successCallback, terminateCallback) {
     terminateCallback()
   }
 }
-},{"../views/editor/repl.js":244,"./gallery.js":232}],235:[function(require,module,exports){
+}).call(this)}).call(this,require('_process'))
+},{"../views/editor/repl.js":244,"./gallery.js":232,"_process":160}],235:[function(require,module,exports){
 module.exports = {
     en: {
         translation: {
@@ -45090,7 +45092,6 @@ module.exports = function mainView(state, emit) {
       <!---<canvas id="audio-canvas">
       </canvas>--->
     </div>
-  ${info(state, emit)}
   ${state.cache(Editor, 'editor').render(state, emit)}
   </body>
  `

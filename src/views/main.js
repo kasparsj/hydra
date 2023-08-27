@@ -11,7 +11,6 @@ module.exports = function mainView(state, emit) {
       <!---<canvas id="audio-canvas">
       </canvas>--->
     </div>
-  ${info(state, emit)}
   ${state.cache(Editor, 'editor').render(state, emit)}
   </body>
  `
