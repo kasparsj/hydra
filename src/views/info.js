@@ -15,7 +15,7 @@ module.exports = function mainView(state, emit) {
       ${state.showInfo && langArray.length > 1 ? html`<div style="display:flex;flex-wrap:wrap">${langArray.map(([key, val]) => html`
         <div class="language-select" onclick=${() => emit('set language', key)}>${val}</div>
       `)}</div>` : html`<div></div>` }
-      ${toolbar(state, emit)}
+      ${state.showToolbar ? toolbar(state, emit) : ''}
     </div>
     <div id="modal-body">
       <div id="modal-content">

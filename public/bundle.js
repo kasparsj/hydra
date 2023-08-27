@@ -12,7 +12,7 @@ app.use(store)
 app.use(languageStore)
 app.route('/', mainView)
 app.route('/hydra-backup', mainView)
-app.mount('body')
+app.mount('main')
 
 
 
@@ -42962,6 +42962,7 @@ const repl = require('../views/editor/repl.js')
 module.exports = function store(state, emitter) {
   state.showInfo = true
   state.showUI = true
+  state.showToolbar = false
 
   const SERVER_URL = process.env['SERVER_URL']
   state.serverURL = SERVER_URL !== undefined ? SERVER_URL : null
@@ -44981,7 +44982,7 @@ module.exports = function mainView(state, emit) {
       ${state.showInfo && langArray.length > 1 ? html`<div style="display:flex;flex-wrap:wrap">${langArray.map(([key, val]) => html`
         <div class="language-select" onclick=${() => emit('set language', key)}>${val}</div>
       `)}</div>` : html`<div></div>` }
-      ${toolbar(state, emit)}
+      ${state.showToolbar ? toolbar(state, emit) : ''}
     </div>
     <div id="modal-body">
       <div id="modal-content">
@@ -45087,14 +45088,15 @@ const Editor = require('./EditorComponent.js')
 
 module.exports = function mainView(state, emit) {
   return html`
-  <body>
+  <main>
     <div id="hydra-ui">
       ${state.cache(Hydra, 'hydra-canvas').render(state, emit)}
       <!---<canvas id="audio-canvas">
       </canvas>--->
     </div>
+  ${info(state, emit)}
   ${state.cache(Editor, 'editor').render(state, emit)}
-  </body>
+  </main>
  `
 }
 },{"./EditorComponent.js":236,"./Hydra.js":237,"./info.js":245,"choo/html":49}],247:[function(require,module,exports){

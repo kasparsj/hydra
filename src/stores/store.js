@@ -5,6 +5,7 @@ const repl = require('../views/editor/repl.js')
 module.exports = function store(state, emitter) {
   state.showInfo = true
   state.showUI = true
+  state.showToolbar = false
 
   const SERVER_URL = process.env['SERVER_URL']
   state.serverURL = SERVER_URL !== undefined ? SERVER_URL : null

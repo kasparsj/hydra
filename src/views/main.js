@@ -5,13 +5,14 @@ const Editor = require('./EditorComponent.js')
 
 module.exports = function mainView(state, emit) {
   return html`
-  <body>
+  <main>
     <div id="hydra-ui">
       ${state.cache(Hydra, 'hydra-canvas').render(state, emit)}
       <!---<canvas id="audio-canvas">
       </canvas>--->
     </div>
+  ${info(state, emit)}
   ${state.cache(Editor, 'editor').render(state, emit)}
-  </body>
+  </main>
  `
 }
