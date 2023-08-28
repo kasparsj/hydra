@@ -3,7 +3,7 @@ const repl = require('../views/editor/repl.js')
 // console.log('ENVIRONMENT IS', process.env.NODE_ENV)
 
 module.exports = function store(state, emitter) {
-  state.showInfo = true
+  state.showInfo = false
   state.showUI = true
   state.showToolbar = false
 
@@ -16,11 +16,6 @@ module.exports = function store(state, emitter) {
     sketches = new Gallery((code, sketchFromURL) => {
       editor.setValue(code)
       repl.eval(code)
-      if(sketchFromURL) {
-        state.showInfo = false
-      } else {
-        state.showInfo = true
-      }
       emitter.emit('render')
       // @todo create gallery store
     //  console.warn('gallery callback not let implemented')
