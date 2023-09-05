@@ -17,6 +17,9 @@ module.exports = function store(state, emitter) {
       editor.setValue(code)
       repl.eval(code)
       emitter.emit('render')
+      if (sessionStorage.getItem('isRenderingAll') === 'true') {
+        state.hydra.hydra.isRenderingAll = true;
+      }
       // @todo create gallery store
     //  console.warn('gallery callback not let implemented')
     }, state, emitter)
@@ -139,6 +142,7 @@ module.exports = function store(state, emitter) {
 
   emitter.on('toggleRenderAll', function() {
       state.hydra.hydra.isRenderingAll = !state.hydra.hydra.isRenderingAll
+      sessionStorage.setItem('isRenderingAll', state.hydra.hydra.isRenderingAll)
   })
 }
 
