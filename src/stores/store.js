@@ -136,6 +136,10 @@ module.exports = function store(state, emitter) {
   emitter.on('mutate sketch', function () {
 
   })
+
+  emitter.on('toggleRenderAll', function() {
+      state.hydra.hydra.isRenderingAll = !state.hydra.hydra.isRenderingAll
+  })
 }
 
 function showConfirmation(successCallback, terminateCallback) {

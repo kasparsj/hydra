@@ -8,6 +8,7 @@ module.exports = {
     'Shift-Ctrl-L': 'gallery:saveToURL',
     'Shift-Ctrl-H': 'hideAll',
     'Shift-Ctrl-S': 'screencap',
+    'Shift-Ctrl-O': 'toggleRenderAll',
 
     'Cmd-Enter': 'editor:evalLine',
     'Cmd-/': 'editor:toggleComment',
@@ -16,5 +17,6 @@ module.exports = {
     'Shift-Cmd-F': 'editor:formatCode',
     'Shift-Cmd-L': 'gallery:saveToURL',
     'Shift-Cmd-H': 'hideAll',
-    'Shift-Cmd-S': 'screencap'
+    'Shift-Cmd-S': 'screencap',
+    'Shift-Cmd-O': 'toggleRenderAll',
 }

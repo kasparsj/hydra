@@ -43093,6 +43093,10 @@ module.exports = function store(state, emitter) {
   emitter.on('mutate sketch', function () {
 
   })
+
+  emitter.on('toggleRenderAll', function() {
+      state.hydra.hydra.isRenderingAll = !state.hydra.hydra.isRenderingAll
+  })
 }
 
 function showConfirmation(successCallback, terminateCallback) {
@@ -43443,6 +43447,7 @@ module.exports = {
     'Shift-Ctrl-L': 'gallery:saveToURL',
     'Shift-Ctrl-H': 'hideAll',
     'Shift-Ctrl-S': 'screencap',
+    'Shift-Ctrl-O': 'toggleRenderAll',
 
     'Cmd-Enter': 'editor:evalLine',
     'Cmd-/': 'editor:toggleComment',
@@ -43451,7 +43456,8 @@ module.exports = {
     'Shift-Cmd-F': 'editor:formatCode',
     'Shift-Cmd-L': 'gallery:saveToURL',
     'Shift-Cmd-H': 'hideAll',
-    'Shift-Cmd-S': 'screencap'
+    'Shift-Cmd-S': 'screencap',
+    'Shift-Cmd-O': 'toggleRenderAll',
 }
 },{}],240:[function(require,module,exports){
 let logElement, prefix, lastMsg;
