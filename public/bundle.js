@@ -43101,6 +43101,19 @@ module.exports = function store(state, emitter) {
       state.hydra.hydra.isRenderingAll = !state.hydra.hydra.isRenderingAll
       sessionStorage.setItem('isRenderingAll', state.hydra.hydra.isRenderingAll)
   })
+
+  emitter.on('renderO0', function() {
+      state.hydra.hydra.synth.render(state.hydra.hydra.o[0])
+  });
+  emitter.on('renderO1', function() {
+      state.hydra.hydra.synth.render(state.hydra.hydra.o[1])
+  });
+  emitter.on('renderO2', function() {
+      state.hydra.hydra.synth.render(state.hydra.hydra.o[2])
+  });
+  emitter.on('renderO3', function() {
+      state.hydra.hydra.synth.render(state.hydra.hydra.o[3])
+  });
 }
 
 function showConfirmation(successCallback, terminateCallback) {
@@ -43260,7 +43273,8 @@ module.exports = class HydraCanvas extends Component {
     // }
 
     window.P5 = P5
-    window.p5 = new P5();
+    // todo: initializing p5 fiddles with canvas size
+    // window.p5 = new P5();
     // window.pb = pb
 
     this.emit('hydra loaded')
@@ -43452,6 +43466,10 @@ module.exports = {
     'Shift-Ctrl-H': 'hideAll',
     'Shift-Ctrl-S': 'screencap',
     'Shift-Ctrl-O': 'toggleRenderAll',
+    'Shift-Ctrl-1': 'renderO0',
+    'Shift-Ctrl-2': 'renderO1',
+    'Shift-Ctrl-3': 'renderO2',
+    'Shift-Ctrl-4': 'renderO3',
 
     'Cmd-Enter': 'editor:evalLine',
     'Cmd-/': 'editor:toggleComment',
@@ -43462,6 +43480,10 @@ module.exports = {
     'Shift-Cmd-H': 'hideAll',
     'Shift-Cmd-S': 'screencap',
     'Shift-Cmd-O': 'toggleRenderAll',
+    'Shift-Cmd-1': 'renderO0',
+    'Shift-Cmd-2': 'renderO1',
+    'Shift-Cmd-3': 'renderO2',
+    'Shift-Cmd-4': 'renderO3',
 }
 },{}],240:[function(require,module,exports){
 let logElement, prefix, lastMsg;

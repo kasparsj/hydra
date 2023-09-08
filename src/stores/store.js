@@ -144,6 +144,19 @@ module.exports = function store(state, emitter) {
       state.hydra.hydra.isRenderingAll = !state.hydra.hydra.isRenderingAll
       sessionStorage.setItem('isRenderingAll', state.hydra.hydra.isRenderingAll)
   })
+
+  emitter.on('renderO0', function() {
+      state.hydra.hydra.synth.render(state.hydra.hydra.o[0])
+  });
+  emitter.on('renderO1', function() {
+      state.hydra.hydra.synth.render(state.hydra.hydra.o[1])
+  });
+  emitter.on('renderO2', function() {
+      state.hydra.hydra.synth.render(state.hydra.hydra.o[2])
+  });
+  emitter.on('renderO3', function() {
+      state.hydra.hydra.synth.render(state.hydra.hydra.o[3])
+  });
 }
 
 function showConfirmation(successCallback, terminateCallback) {

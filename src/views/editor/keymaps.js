@@ -9,6 +9,10 @@ module.exports = {
     'Shift-Ctrl-H': 'hideAll',
     'Shift-Ctrl-S': 'screencap',
     'Shift-Ctrl-O': 'toggleRenderAll',
+    'Shift-Ctrl-1': 'renderO0',
+    'Shift-Ctrl-2': 'renderO1',
+    'Shift-Ctrl-3': 'renderO2',
+    'Shift-Ctrl-4': 'renderO3',
 
     'Cmd-Enter': 'editor:evalLine',
     'Cmd-/': 'editor:toggleComment',
@@ -19,4 +23,8 @@ module.exports = {
     'Shift-Cmd-H': 'hideAll',
     'Shift-Cmd-S': 'screencap',
     'Shift-Cmd-O': 'toggleRenderAll',
+    'Shift-Cmd-1': 'renderO0',
+    'Shift-Cmd-2': 'renderO1',
+    'Shift-Cmd-3': 'renderO2',
+    'Shift-Cmd-4': 'renderO3',
 }
