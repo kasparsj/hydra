@@ -49,7 +49,8 @@ module.exports = class HydraCanvas extends Component {
     // }
 
     window.P5 = P5
-    window.p5 = new P5();
+    // todo: initializing p5 fiddles with canvas size
+    // window.p5 = new P5();
     // window.pb = pb
 
     this.emit('hydra loaded')
