@@ -42612,9 +42612,9 @@ class Gallery {
         callback(this.code, false)
       } else {
         request
-          // .get('/sketchById')
-          .get(`${this.state.serverURL}/sketchById`)
-          .query({ sketch_id: sketch_id })
+          .get('/sketches/' + sketch_id + '.json')
+          // .get(`${this.state.serverURL}/sketchById`)
+          // .query({ sketch_id: sketch_id })
           .end((err, res) => {
             // console.log('got sketches', res.text, err)
             if (err) {
