@@ -2,6 +2,7 @@ const html = require('choo/html')
 const Component = require('choo/component')
 // const HydraSynth = require('hydra-synth')
 // const HydraSynth = require('./../../../../../hydra-synth')
+// todo: make P5 optional
 const P5 = require('./../lib/p5-wrapper.js')
 const PatchBay = require('./../lib/patch-bay/pb-live.js')
 let pb
@@ -25,7 +26,13 @@ module.exports = class HydraCanvas extends Component {
     let precisionValue = isIOS ? 'highp' : 'mediump'
 
 
-    const hydraOptions = { detectAudio: true, canvas: element.querySelector("canvas"), precision: precisionValue }
+    let searchParams = new URLSearchParams(window.location.search)
+    let webgl = sessionStorage.getItem('webgl')
+    if (searchParams.has('webgl')) {
+      webgl = searchParams.get('webgl')
+      sessionStorage.setItem('webgl', webgl)
+    }
+    const hydraOptions = { detectAudio: true, canvas: element.querySelector("canvas"), precision: precisionValue, webgl }
     
     if (this.state.serverURL === null) {
       console.log('LOCAL ONLY, WILL NOT INIT webRTC and gallery')
@@ -48,9 +55,11 @@ module.exports = class HydraCanvas extends Component {
 
     // }
 
-    window.P5 = P5
-    // todo: initializing p5 fiddles with canvas size
-    // window.p5 = new P5();
+    if (typeof p5 !== 'undefined') {
+      window.P5 = P5
+      // todo: initializing a default instance of p5 fiddles with canvas size
+      // window.p5 = new P5();
+    }
     // window.pb = pb
 
     this.emit('hydra loaded')
