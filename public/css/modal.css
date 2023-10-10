@@ -178,7 +178,7 @@ a{
   color: #fff;
 }
 
-ul > li {
+#modal-content ul > li {
   margin-top: 5px;
   font-size: 16px;
 }

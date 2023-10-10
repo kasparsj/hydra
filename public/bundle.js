@@ -42583,6 +42583,7 @@ class Gallery {
     this.code = null
     //this.exampleIndex = null
     let newurl = window.location.protocol + '//' + window.location.host + window.location.pathname
+    // todo: max query size is around 15000
     window.history.pushState({ path: newurl }, '', newurl)
     this.url = newurl
   }
@@ -42837,6 +42838,7 @@ ${code}
 
     let newurl = window.location.protocol + '//' +
       window.location.host + window.location.pathname + '?' + url_params
+    // todo: max query size is around 15000
     window.history.pushState({ path: newurl }, '', newurl)
     this.url = newurl
   }
