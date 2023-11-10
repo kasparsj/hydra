@@ -8,6 +8,7 @@ export default {
     'Shift-Ctrl-L': 'gallery:saveToURL',
     'Shift-Ctrl-H': 'ui: hide all',
     'Shift-Ctrl-S': 'screencap',
+    'Shift-Ctrl-T': 'ui: toggle toolbar',
     'Shift-Ctrl-O': 'toggleRenderAll',
     'Shift-Ctrl-1': 'renderO0',
     'Shift-Ctrl-2': 'renderO1',

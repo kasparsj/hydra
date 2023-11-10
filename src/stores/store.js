@@ -100,6 +100,11 @@ export default function store(state, emitter) {
     emitter.emit('render')
   })
 
+  emitter.on('ui: toggle toolbar', () => {
+    state.showToolbar = !state.showToolbar
+    emitter.emit('render')
+  })
+
 
 
   // emitter.on('mutate sketch', function () {
