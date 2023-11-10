@@ -17,7 +17,7 @@ app.mount('main')
 
 
 
-},{"./src/stores/language-store.js":233,"./src/stores/store.js":234,"./src/views/main.js":246,"choo":51,"choo-devtools":38}],2:[function(require,module,exports){
+},{"./src/stores/language-store.js":232,"./src/stores/store.js":233,"./src/views/main.js":245,"choo":51,"choo-devtools":38}],2:[function(require,module,exports){
 function _arrayLikeToArray(arr, len) {
   if (len == null || len > arr.length) len = arr.length;
   for (var i = 0, arr2 = new Array(len); i < len; i++) arr2[i] = arr[i];
@@ -41868,57 +41868,6 @@ yeast.decode = decode;
 module.exports = yeast;
 
 },{}],228:[function(require,module,exports){
-//'use babel'
-
-// const p5lib = require('p5')
-
-class P5 extends p5{
-  constructor ({
-    width = window.innerWidth,
-    height = window.innerHeight,
-    mode = 'P2D'
-  } = {}) {
-    //console.log('createing canvas', width, height, window.innerWidth, window.innerHeight)
-    super(( p ) => {
-      p.setup = () => { p.createCanvas(width, height, p[mode]) }
-  //    p.setup = () => { p.createCanvas() }
-      p.draw = () => { }
-    }, document.getElementById('hydra-ui'))
-    this.width = width
-    this.height = height
-    this.mode = mode
-    if (!this.canvas) {
-      this.setup();
-      const p5 = this;
-      window.addEventListener('load', () => {
-        p5.hide();
-      });
-    }
-    this.canvas.style.position = "absolute"
-    this.canvas.style.top = "0px"
-    this.canvas.style.left = "0px"
-    this.canvas.style.zIndex = -1
-    // console.log('p5', this)
-  //  return this.p5
-  }
-
-  show() {
-    this.canvas.style.visibility = "visible"
-  }
-
-  hide() {
-    this.canvas.style.visibility = "hidden"
-  }
-
-  // p5 clear function not covering canvas
-  clear() {
-    this.drawingContext.clearRect(0, 0, this.canvas.width, this.canvas.height)
-  }
-}
-
-module.exports = P5
-
-},{}],229:[function(require,module,exports){
 /* globals sessionStorage */
 // Extends rtc-patch-bay to include support for nicknames and persistent session storage
 
@@ -42059,7 +42008,7 @@ PBLive.prototype._processBroadcast = function (data) {
 // PBExtended.prototype.
 module.exports = PBLive
 
-},{"./rtc-patch-bay.js":230,"inherits":102}],230:[function(require,module,exports){
+},{"./rtc-patch-bay.js":229,"inherits":102}],229:[function(require,module,exports){
 // Module for handling connections to multiple peers.
 
 
@@ -42313,7 +42262,7 @@ PatchBay.prototype._destroy = function () {
 
 module.exports = PatchBay
 
-},{"events":81,"inherits":102,"shortid":171,"simple-peer":181,"socket.io-client":200}],231:[function(require,module,exports){
+},{"events":81,"inherits":102,"shortid":171,"simple-peer":181,"socket.io-client":200}],230:[function(require,module,exports){
 module.exports=[
   {
     "sketch_id": "example_0",
@@ -42542,7 +42491,7 @@ module.exports=[
 }
 ]
 
-},{}],232:[function(require,module,exports){
+},{}],231:[function(require,module,exports){
 const request = require('superagent')
 const examples = require('./examples.json')
 const sketches = []
@@ -42583,7 +42532,6 @@ class Gallery {
     this.code = null
     //this.exampleIndex = null
     let newurl = window.location.protocol + '//' + window.location.host + window.location.pathname
-    // todo: max query size is around 15000
     window.history.pushState({ path: newurl }, '', newurl)
     this.url = newurl
   }
@@ -42838,7 +42786,6 @@ ${code}
 
     let newurl = window.location.protocol + '//' +
       window.location.host + window.location.pathname + '?' + url_params
-    // todo: max query size is around 15000
     window.history.pushState({ path: newurl }, '', newurl)
     this.url = newurl
   }
@@ -42853,7 +42800,7 @@ ${code}
 
 module.exports = Gallery
 
-},{"./examples.json":231,"superagent":218}],233:[function(require,module,exports){
+},{"./examples.json":230,"superagent":218}],232:[function(require,module,exports){
 const i18next = require('i18next')
 const i18nextBrowserLanguageDetector = require('i18next-browser-languagedetector')
 // const i18nextHttpBackend = require('i18next-http-backend')
@@ -42955,7 +42902,7 @@ module.exports = function store(state, emitter) {
 
 }
 
-},{"./text-elements.js":235,"i18next":99,"i18next-browser-languagedetector":98}],234:[function(require,module,exports){
+},{"./text-elements.js":234,"i18next":99,"i18next-browser-languagedetector":98}],233:[function(require,module,exports){
 (function (process){(function (){
 const Gallery = require('./gallery.js')
 const repl = require('../views/editor/repl.js')
@@ -43128,7 +43075,7 @@ function showConfirmation(successCallback, terminateCallback) {
   }
 }
 }).call(this)}).call(this,require('_process'))
-},{"../views/editor/repl.js":244,"./gallery.js":232,"_process":160}],235:[function(require,module,exports){
+},{"../views/editor/repl.js":243,"./gallery.js":231,"_process":160}],234:[function(require,module,exports){
 module.exports = {
     en: {
         translation: {
@@ -43171,7 +43118,7 @@ module.exports = {
         }
     }
 }
-},{}],236:[function(require,module,exports){
+},{}],235:[function(require,module,exports){
 const html = require('choo/html')
 const Component = require('choo/component')
 const HydraEditor = require('./editor/editor.js')
@@ -43223,13 +43170,11 @@ module.exports = class Editor extends Component {
   }
 }
 
-},{"./editor/editor.js":238,"./editor/log.js":240,"choo/component":48,"choo/html":49}],237:[function(require,module,exports){
+},{"./editor/editor.js":237,"./editor/log.js":239,"choo/component":48,"choo/html":49}],236:[function(require,module,exports){
 const html = require('choo/html')
 const Component = require('choo/component')
 // const HydraSynth = require('hydra-synth')
 // const HydraSynth = require('./../../../../../hydra-synth')
-// todo: make P5 optional
-const P5 = require('./../lib/p5-wrapper.js')
 const PatchBay = require('./../lib/patch-bay/pb-live.js')
 let pb
 
@@ -43281,11 +43226,6 @@ module.exports = class HydraCanvas extends Component {
 
     // }
 
-    if (typeof p5 !== 'undefined') {
-      window.P5 = P5
-      // todo: initializing a default instance of p5 fiddles with canvas size
-      // window.p5 = new P5();
-    }
     // window.pb = pb
 
     this.emit('hydra loaded')
@@ -43302,7 +43242,7 @@ module.exports = class HydraCanvas extends Component {
   }
 }
 
-},{"./../lib/p5-wrapper.js":228,"./../lib/patch-bay/pb-live.js":229,"choo/component":48,"choo/html":49}],238:[function(require,module,exports){
+},{"./../lib/patch-bay/pb-live.js":228,"choo/component":48,"choo/html":49}],237:[function(require,module,exports){
 /* eslint-disable no-eval */
 var CodeMirror = require('codemirror-minified/lib/codemirror')
 require('codemirror-minified/mode/javascript/javascript')
@@ -43465,7 +43405,7 @@ module.exports = class Editor extends EventEmitter {
 }
 
 
-},{"./keymaps.js":239,"./randomizer/Mutator.js":241,"codemirror-minified/addon/comment/comment":54,"codemirror-minified/addon/hint/javascript-hint":55,"codemirror-minified/addon/hint/show-hint":56,"codemirror-minified/addon/selection/mark-selection":57,"codemirror-minified/lib/codemirror":58,"codemirror-minified/mode/javascript/javascript":59,"js-beautify":103,"nanobus":128}],239:[function(require,module,exports){
+},{"./keymaps.js":238,"./randomizer/Mutator.js":240,"codemirror-minified/addon/comment/comment":54,"codemirror-minified/addon/hint/javascript-hint":55,"codemirror-minified/addon/hint/show-hint":56,"codemirror-minified/addon/selection/mark-selection":57,"codemirror-minified/lib/codemirror":58,"codemirror-minified/mode/javascript/javascript":59,"js-beautify":103,"nanobus":128}],238:[function(require,module,exports){
 module.exports = { 
     'Ctrl-Enter': 'editor:evalLine',
     'Ctrl-/': 'editor:toggleComment',
@@ -43496,7 +43436,7 @@ module.exports = {
     'Shift-Cmd-3': 'renderO2',
     'Shift-Cmd-4': 'renderO3',
 }
-},{}],240:[function(require,module,exports){
+},{}],239:[function(require,module,exports){
 let logElement, prefix, lastMsg;
 const fpsArr = [];
 const fpsCount = 60;
@@ -43553,7 +43493,7 @@ module.exports = {
   }
 }
 
-},{}],241:[function(require,module,exports){
+},{}],240:[function(require,module,exports){
 const {Parser} = require("acorn");
 const {generate} = require('astring');
 const { defaultTraveler, attachComments, makeTraveler } = require('astravel');
@@ -43817,7 +43757,7 @@ class Mutator {
 
 module.exports = Mutator
 
-},{"./../repl.js":244,"./UndoStack.js":242,"./glslTransforms.js":243,"acorn":19,"astravel":26,"astring":29}],242:[function(require,module,exports){
+},{"./../repl.js":243,"./UndoStack.js":241,"./glslTransforms.js":242,"acorn":19,"astravel":26,"astring":29}],241:[function(require,module,exports){
 // A generalized 'Undo stack' which can keep N levels of revertable state.
 class UndoStack {
     constructor(limit) {
@@ -43872,7 +43812,7 @@ class UndoStack {
 
 
 module.exports = {UndoStack}
-},{}],243:[function(require,module,exports){
+},{}],242:[function(require,module,exports){
 /*
 Format for adding functions to hydra. For each entry in this file, hydra automatically generates a glsl function and javascript function with the same name. You can also ass functions dynamically using setFunction(object).
 
@@ -44973,7 +44913,7 @@ module.exports = [
   `   return vec4(_c0.a * scale + offset);`
   }
   ]
-},{}],244:[function(require,module,exports){
+},{}],243:[function(require,module,exports){
 const log = require('./log.js').log
 
 module.exports = {
@@ -45002,7 +44942,7 @@ module.exports = {
   }
 }
 
-},{"./log.js":240}],245:[function(require,module,exports){
+},{"./log.js":239}],244:[function(require,module,exports){
 const html = require('choo/html')
 const raw = require('choo/html/raw')
 const toolbar = require('./toolbar.js')
@@ -45118,7 +45058,7 @@ module.exports = function mainView(state, emit) {
 //   </div>
 //  `
 // }
-},{"./toolbar.js":247,"choo/html":49,"choo/html/raw":50}],246:[function(require,module,exports){
+},{"./toolbar.js":246,"choo/html":49,"choo/html/raw":50}],245:[function(require,module,exports){
 const html = require('choo/html')
 const info = require('./info.js')
 const Hydra = require('./Hydra.js')
@@ -45137,7 +45077,7 @@ module.exports = function mainView(state, emit) {
   </main>
  `
 }
-},{"./EditorComponent.js":236,"./Hydra.js":237,"./info.js":245,"choo/html":49}],247:[function(require,module,exports){
+},{"./EditorComponent.js":235,"./Hydra.js":236,"./info.js":244,"choo/html":49}],246:[function(require,module,exports){
 const html = require('choo/html')
 
 module.exports = function toolbar(state, emit) {

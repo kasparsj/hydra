@@ -2,8 +2,6 @@ const html = require('choo/html')
 const Component = require('choo/component')
 // const HydraSynth = require('hydra-synth')
 // const HydraSynth = require('./../../../../../hydra-synth')
-// todo: make P5 optional
-const P5 = require('./../lib/p5-wrapper.js')
 const PatchBay = require('./../lib/patch-bay/pb-live.js')
 let pb
 
@@ -55,11 +53,6 @@ module.exports = class HydraCanvas extends Component {
 
     // }
 
-    if (typeof p5 !== 'undefined') {
-      window.P5 = P5
-      // todo: initializing a default instance of p5 fiddles with canvas size
-      // window.p5 = new P5();
-    }
     // window.pb = pb
 
     this.emit('hydra loaded')
