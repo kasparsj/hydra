@@ -11,11 +11,12 @@ export default class Editor extends Component {
     super(id)
     this.local = state.components[id] = {}
     state.editor = this // hacky way fo sharing editor to rest of app
+    this.state = state
     this.emit = emit
   }
 
   load (element) {
-   log.init(this.logElement)
+   log.init(this.state, this.logElement)
    this.editor = new HydraEditor(this.textEl)
    this.editor.on("*", (e, args) => {
        this.emit(e, args)

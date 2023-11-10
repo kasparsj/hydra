@@ -1,16 +1,16 @@
 import { log } from './log.js'
+import { separator } from "./editor";
 
 export default {
   eval: (arg, callback) => {
-    var self = this
-
+    arg = arg.split(separator).reverse().join("\n")
     // wrap everything in an async function
   var jsString = `(async() => {
     ${arg}
 })().catch(${(err) => log(err.message, "log-error")})`
     var isError = false
     try {
-      window.eval(jsString)
+      eval(jsString)
       // log(jsString)
       log('')
     } catch (e) {

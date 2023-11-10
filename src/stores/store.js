@@ -114,18 +114,14 @@ export default function store(state, emitter) {
       sessionStorage.setItem('isRenderingAll', state.hydra.hydra.isRenderingAll)
   })
 
-  emitter.on('renderO0', function() {
-      state.hydra.hydra.synth.render(state.hydra.hydra.o[0])
-  });
-  emitter.on('renderO1', function() {
-      state.hydra.hydra.synth.render(state.hydra.hydra.o[1])
-  });
-  emitter.on('renderO2', function() {
-      state.hydra.hydra.synth.render(state.hydra.hydra.o[2])
-  });
-  emitter.on('renderO3', function() {
-      state.hydra.hydra.synth.render(state.hydra.hydra.o[3])
-  });
+  for (let i=0; i<4; i++) {
+    emitter.on('renderOut'+i, function() {
+      state.hydra.hydra.synth.render(state.hydra.hydra.o[i])
+    });
+    emitter.on('editor: show buf'+i, function() {
+      state.editor.editor.showBuf(i);
+    });
+  }
   // })
 }
 

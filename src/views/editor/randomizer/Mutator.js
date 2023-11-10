@@ -59,7 +59,7 @@ export default class Mutator {
 
   mutate(options) {
     // Get text from CodeMirror.
-    let text = this.editor.cm.getValue();
+    let text = this.editor.getValue();
     this.undoStack.push({text, lastLitX: this.lastLitX});
     let needToRun = true;
     let tryCounter = 5;
@@ -80,7 +80,7 @@ export default class Mutator {
         // Generate JS from AST and set back into CodeMirror editor.
         let regen = generate(ast, {comments: true});
 
-        this.editor.cm.setValue(regen);
+        this.editor.setValue(regen);
 				try {
         // Evaluate the updated expression.
         repl.eval(regen, (code, error) => {
@@ -100,7 +100,7 @@ export default class Mutator {
   doUndo() {
     // If the current text is unsaved, save it so we can redo if need be.
     if (this.undoStack.atTop()) {
-        let text = this.editor.cm.getValue();
+        let text = this.editor.getValue();
         this.undoStack.push({text, lastLitX: this.lastLitX});
     }
     // Then pop-off the info to restore.
@@ -120,7 +120,7 @@ export default class Mutator {
   }
 
   setText(text) {
-    this.editor.cm.setValue(text);
+    this.editor.setValue(text);
     repl.eval(text, (code, error) => {
     });
 

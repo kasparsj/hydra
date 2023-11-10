@@ -13,7 +13,8 @@ import Mutator from './randomizer/Mutator.js'
 import beautify from 'js-beautify'
 
 var isShowing = true
-
+export const numBufs = 4;
+export const separator = "\n//𝕥𝕒𝕓\n";
 
 export default class Editor extends EventEmitter {
   constructor(parent) {
@@ -69,6 +70,8 @@ export default class Editor extends EventEmitter {
     window.cm = this.cm
     this.cm.refresh()
 
+    this.currentBuf = 0
+
     // this.show()
     // // // TO DO: add show code param
     // let searchParams = new URLSearchParams(window.location.search)
@@ -84,11 +87,22 @@ export default class Editor extends EventEmitter {
   }
 
   setValue(val) {
-    this.cm.setValue(val)
+    this.bufs = val.split(separator);
+    while (this.bufs.length < numBufs) {
+      this.bufs.push('');
+    }
+    this.cm.setValue(this.bufs[this.currentBuf])
   }
 
   getValue() {
-    return this.cm.getValue()
+    this.bufs[this.currentBuf] = this.cm.getValue()
+    return this.bufs.join(separator);
+  }
+
+  showBuf(buf) {
+    this.bufs[this.currentBuf] = this.cm.getValue()
+    this.currentBuf = buf;
+    this.cm.setValue(this.bufs[this.currentBuf])
   }
 
   formatCode() {
