@@ -8,7 +8,7 @@ export default {
 })().catch(${(err) => log(err.message, "log-error")})`
     var isError = false
     try {
-      window.eval(jsString)
+      eval(jsString)
       // log(jsString)
       log('')
     } catch (e) {
