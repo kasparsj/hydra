@@ -115,11 +115,8 @@ export default function store(state, emitter) {
   })
 
   for (let i=0; i<4; i++) {
-    emitter.on('renderOut'+i, function() {
+    emitter.on('renderO'+i, function() {
       state.hydra.hydra.synth.render(state.hydra.hydra.o[i])
-    });
-    emitter.on('editor: show buf'+i, function() {
-      state.editor.editor.showBuf(i);
     });
   }
   // })

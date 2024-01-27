@@ -14,10 +14,9 @@ const tick = () => {
   const now = Date.now();
   if (now - lastUpdate >= 1000) {
     lastUpdate = now;
-    const buf = appState ? appState.editor.editor.currentBuf : 0;
     const out = appState ? appState.hydra.hydra.output.id : 0;
     const fps = (fpsArr.reduce((a, b) => a + b, 0) / fpsCount).toFixed(1);
-    prefix = `buf: ${buf} | out: ${out} | ${fps} >> `;
+    prefix = `out: ${out} | ${fps} >> `;
     draw();
   }
 }
