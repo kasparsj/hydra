@@ -1,4 +1,11 @@
 # Changelog
+# [1.5.3] - 2023 - 02 - 19
+- fixed error reporting
+- removed devtools
+  
+# [1.5.2] - 2023 - 02 - 10
+- updated upload text, removed default
+
 # [1.5.1] - 2023 - 07 - 19
 ## Added
 - extension loader
@@ -13,6 +20,10 @@
 
 ## Fixed
 - global eval working again when switched to `window.eval` instead of `eval`
+
+# [1.4.3] - 2024 - 02-09
+## Changed
+- updated text for uploading to gallery
   
 # [1.4.1] - 2023 - 07-13
 ## Added

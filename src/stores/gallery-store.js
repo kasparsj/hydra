@@ -66,11 +66,25 @@ export default function galleryStore(state, emitter) {
 }
 
 function showConfirmation(successCallback, terminateCallback) {
-    var c = prompt("Pressing OK will share this sketch to \nhttps://twitter.com/hydra_patterns.\n\nInclude your name or twitter handle (optional):")
-    //  console.log('confirm value', c)
-    if (c !== null) {
-      successCallback(c)
-    } else {
-      terminateCallback()
-    }
+  var c = prompt(`
+
+HYDRA SKETCH GALLERY
+///////////////////////////////////////
+
+🎨 Add your sketch to the gallery of hydra sketches at https://botsin.space/@hydra. 
+
+✍️ Type your name, mastodon handle, or a short description below, and then press 'OK' to share.
+
+‼️ Make sure you are ready to share - there is no undo button!
+
+💖 Thank you for sharing! You are also warmly invited to join the the live coding server on the fediverse at https://social.toplap.org/.
+` 
+, '')
+
+  //  console.log('confirm value', c)
+  if (c !== null) {
+    successCallback(c)
+  } else {
+    terminateCallback()
   }
+}
