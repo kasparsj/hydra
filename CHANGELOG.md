@@ -3,6 +3,13 @@
 - updated code editor to cm6
 - still not working: dice button
   
+# [1.5.3] - 2023 - 02 - 19
+- fixed error reporting
+- removed devtools
+  
+# [1.5.2] - 2023 - 02 - 10
+- updated upload text, removed default
+
 # [1.5.1] - 2023 - 07 - 19
 ## Added
 - extension loader
