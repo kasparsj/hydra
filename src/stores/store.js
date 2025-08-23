@@ -1,4 +1,4 @@
-import repl from './repl-v2.js'
+import repl from './repl-react.js'
 // console.log('ENVIRONMENT IS', process.env.NODE_ENV)
 
 export default function store(state, emitter) {
