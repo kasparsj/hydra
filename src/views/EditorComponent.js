@@ -1,5 +1,3 @@
-
-
 import html from 'choo/html'
 import Component from 'choo/component'
 import HydraEditor from './editor/editor.js'
@@ -37,15 +35,18 @@ export default class Editor extends Component {
     this.logElement.style.opacity = 1
   }
 
-  update (state) {
+  update(state) {
     if(state.showInfo === true && state.showExtensions === false || state.showUI === false) {
         this.hide()
     } else {
         this.show()
     }
-    const msg = state.errorMessage
-    const className = state.isError ? 'log-error' : ''
-    this.logElement.innerHTML = ` >> <span class=${className}> ${msg} </span> `
+    if (state.isError) {
+        log.error(state.errorMessage)
+    }
+    else {
+        log.log('')
+    }
     return false
   }
 

@@ -22,7 +22,7 @@ const tick = () => {
 }
 
 const draw = () => {
-  if (logElement) if(logElement) logElement.innerHTML =`${prefix} ${lastMsg}`;
+  if (logElement) logElement.innerHTML =`${prefix} ${lastMsg}`;
 }
 
 const init = (state, el) => {
@@ -37,8 +37,11 @@ const init = (state, el) => {
 }
 const log = (msg, className = "") => {
   console.log('logging', msg, className)
-  lastMsg = `<span className=${className}> ${msg} </span>`;
+  lastMsg = `<span class=${className}> ${msg} </span>`;
   draw();
+}
+const error = (msg, className = "log-error") => {
+  log(msg, className);
 }
 const hide = () => {
   if (logElement) logElement.style.display = 'none'
@@ -55,5 +58,5 @@ const toggle = () => {
 }
 
 
-const exports = { init, log, hide, show, toggle }
-export { exports as default, log, hide, show, toggle }
+const exports = { init, log, error, hide, show, toggle }
+export { exports as default, log, error, hide, show, toggle }
